@@ -1,4 +1,5 @@
-# Fun in BASIC
+Fun in BASIC
+============
 
 This is a collection of BASIC (usually Sinclair Basic) programs I made from
 time to time to relax with some light coding and indulge my nostalgia in the
@@ -7,7 +8,7 @@ dubiously designed BASIC variants for machines from nearly 40 years ago (see
 the sections below for details).
 
 
-# Running
+## Running
 
 Most programs are for the Sinclair ZX Spectrum and its Sinclair BASIC variant,
 and are provided as `tap` files that can be loaded in any Spectrum emulator. A
@@ -20,7 +21,7 @@ emulators, you need a special utility such as Paul Dunn's BASin. A version of
 it can be found here: https://arda.kisafilm.org/blog/?page_id=848&lang=en .
 
 
-# Purity Principles
+## Purity Principles
 
 As part of the nostalgia/challenge theme, while writing these I adhered to a
 set of guidelines (these apply to Sinclair BASIC unless otherwise noted):
@@ -28,16 +29,16 @@ set of guidelines (these apply to Sinclair BASIC unless otherwise noted):
 - The program must be pure BASIC. No use of machine code subroutines (not even
   those in the ROM).
 
-- No use of PEEK and POKE, except for:
+- No use of `PEEK` and `POKE`, except for:
   - Setting up UDGs
-  - Manipulating the keyboard-related sysvars such as LASTK, REPPER and REPDEL,
-    if this significantly improves the game's playability.
+  - Manipulating the keyboard-related sysvars such as `LASTK`, `REPPER` and
+    `REPDEL`, if this significantly improves the game's playability.
 
 - Programs should be made for the 48K Spectrum unless there is some 128K
-  feature I really need (PLAY, ramdisk etc)
+  feature I really need (`PLAY`, ramdisk etc)
 
 
-# Challenges
+## Challenges
 
 Writing action games for Sinclair BASIC is quite an interesting challenge. The
 machine itself is fast enough when programmed in machine code (as proven by the
@@ -61,14 +62,14 @@ possible, avoiding temporary assignments etc. All to avoid slowing down the
 action so much so that the game becomes unplayable.
 
 A similar design limitation refers to how the lines of BASIC code are stored
-and accessed. Whenever the program flow is disrupted by issuing a GO TO or
-GO SUB or RETURN, the interpreter will do a linear search for the line (heh)
-where program execution is to be continued. This means that a GO TO gets slower
-(and perceptibly so, in a tight loop) with every line that exists before the
-destination. Thus, a fast program needs to be organized such that its main
-loop occurs as early as possible. GO TOs, both forward and back, must be
-avoided as much as possible (use IFs instead), and certainly don't call any
-subroutines in any tight loops.
+and accessed. Whenever the program flow is disrupted by issuing a `GO TO` or
+`GO SUB` or `RETURN`, the interpreter will do a linear search for the line
+(heh) where program execution is to be continued. This means that a `GO TO`
+gets slower (and perceptibly so, in a tight loop) with every line that exists
+before the destination. Thus, a fast program needs to be organized such that
+its main loop occurs as early as possible. `GO TO`s, both forward and back,
+must be avoided as much as possible (use `IF`s instead), and certainly don't
+call any subroutines in any tight loops.
 
 Memory is also relatively scarce (only about 15K of data in practice) and not
 very efficiently used (any numeric value uses at least 5 bytes). For action
